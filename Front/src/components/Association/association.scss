@@ -1,0 +1,111 @@
+@use  'src/styles/vars.scss';
+
+.association {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 73vh;
+  padding-bottom: vars.$gutter;
+  border: 2px solid vars.$dark;
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100%;
+    height: 60vh;
+    background-color: vars.$dark;
+    text-align: center;
+    color: vars.$white;
+
+    &-name {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      font-size: x-large;
+      height: 12vh;
+      min-height: 5vh;
+      padding-top: vars.$gutter;
+    }
+
+    &-img {
+      width: 90%;
+      height: 30vh;
+      min-height: 30vh;
+      object-position: 50% 50%;
+      object-fit: cover;
+      border: 2px solid vars.$white;
+    }
+
+    &-info {
+      margin-top: vars.$gutter*0.3;
+      width: 90%;
+      height: 10vh;
+      padding: vars.$gutter;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5vh;
+    }
+  }
+
+  &-content {
+    height: 22vh;
+    max-height: 22vh;
+    padding: vars.$gutter;
+    overflow: hidden;
+    font-size: small;
+    text-align: justify;
+  }
+  
+  &-link {
+    width: 70%;
+    margin-top: vars.$gutter;
+    padding: vars.$gutter*0.5;
+    text-align: center;
+    border: 2px solid vars.$dark;
+
+    &:hover {
+      background-color: vars.$dark;
+      border: 2px solid vars.$green;
+      color: vars.$white;
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .association {
+    width: 45%;
+    height: 80vh;
+
+    &-header{
+      &-name{
+        height: 15vh;
+      }
+    }
+  }
+}
+
+
+
+/* -------- DESKTOP -------- */
+@media (min-width:1024px) {
+  .association {
+    width: 29%;
+
+    &-content {
+      &-title {
+        font-size: x-large;
+      }
+
+      &-description {
+        font-size:medium;
+      }
+    }
+  }
+}

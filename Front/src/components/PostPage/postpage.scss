@@ -1,0 +1,201 @@
+@use  'src/styles/vars.scss';
+
+.postpage {
+  margin-top: 5vh;
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 3vh;
+  border-top: 10px double vars.$green;
+  border-bottom: 10px double vars.$green;
+  text-align: center;
+
+  &-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(2, 117, 117, 0.2);
+
+    &-title {
+      padding: vars.$gutter;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  
+    &-img {
+      max-height: 30vh;
+      object-position: 50% 50%;
+      object-fit: cover;
+    }
+  
+    &-info {
+      padding: vars.$gutter;
+    }
+  }
+
+  &-description {
+    padding-left: vars.$gutter;
+    padding-right: vars.$gutter;
+    font-size: small;
+    text-align: justify;
+  }
+
+  &-button {
+    all: unset;
+    width: 60%;
+    padding: vars.$gutter*0.8;
+    border: 2px solid vars.$green;
+
+    &:hover {
+      cursor: pointer;
+      background-color: vars.$white;
+      color: vars.$green;
+    }
+  }
+
+  &-goback {
+    all: unset;
+
+    &:before {
+      content: "\21E0      ";
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &-report {
+    all: unset;
+    width: 50%;
+    margin-bottom: 1vh;
+    font-size: 1.7vh;
+    color: red;
+    cursor: pointer;
+
+    &:before {
+      content: "\26A0 ";
+    }
+  }
+
+  &-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 80%;
+      height: auto;
+      padding: 3vh;
+      border: 1px solid vars.$yellow;
+      background-color: vars.$dark;
+      color: vars.$white;
+      font-weight: 700;
+      text-align: center;
+
+      &-title {
+        padding-bottom: vars.$gutter*0.5;
+      }
+
+      &-link {
+        padding-top: vars.$gutter*2;
+
+        &:before {
+          content: "\00BB   ";
+          color: vars.$yellow;
+        }
+
+        &:hover {
+          color: vars.$yellow;
+        }
+      }
+
+      &-description {
+        margin-bottom: vars.$gutter;
+      }
+      
+      &-area {
+        height: 25vh;
+        width: 100%;
+        margin-bottom: vars.$gutter;
+      }
+
+      &-button {
+        all: unset;
+
+        &:before {
+          content: "\1F582   ";
+          color: vars.$yellow;
+        }
+
+        &:hover {
+          cursor: pointer;
+          color: vars.$yellow;
+        }
+      }
+
+      &-close {
+        all: unset;
+        align-self: flex-end;
+        font-size: 4vh;
+        color: vars.$yellow;
+        cursor: pointer;
+      }
+    }
+  }  
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .postpage {
+    width: 80%;
+    border: 10px double vars.$green;
+
+    &-modal {
+      &-content {
+        width: 60%;
+
+        &-description {
+          line-height: 3vh;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* -------- DESKTOP-------- */
+@media (min-width:1024px) {
+  .postpage {
+    width: 50%;
+
+    &-header {
+      &-img {
+        min-height: 40vh;
+      }
+    }
+
+    &-modal {
+      &-content {
+        width: 35%;
+      }
+    }
+  }
+}

@@ -1,0 +1,14 @@
+@use 'reset';
+@use 'vars';
+
+@font-face {
+  font-family: 'Jost';
+  src: url('../assets/fonts/Jost-VariableFont_wght.ttf');
+}
+
+body {
+  font-family: 'Jost', sans-serif;
+  background-color: vars.$grey;
+  color: vars.$dark;
+  height: 100vh;
+}

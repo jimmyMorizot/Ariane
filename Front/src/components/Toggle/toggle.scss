@@ -1,0 +1,57 @@
+@use  'src/styles/vars.scss';
+
+.user-toggle-open {
+  width: 50px;
+  height: 50px;
+  align-self: center;
+  margin-top: -5vh;
+  border: solid 2px vars.$yellow;
+  border-radius: 50%;
+  background-color: vars.$dark;
+  color: vars.$white;
+  font-size: large;
+
+  &:after {
+    content: "\25BC";
+    color: vars.$white;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.user-toggle-close {
+  width: 50px;
+  height: 50px;
+  align-self: center;
+  margin-top: -5vh;
+  border: solid 2px vars.$white;
+  border-radius: 50%;
+  background-color: vars.$dark;
+  color: vars.$white;
+  font-size: large;
+
+  &:after {
+    content: "\25B2";
+    color: vars.$white;
+  }
+
+  &:hover {
+    transform: scale(1.1);
+    border: solid 2px vars.$yellow;
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .user-toggle-open {
+    display: none;
+  }
+
+  .user-toggle-close {
+    display: none;
+  }
+}

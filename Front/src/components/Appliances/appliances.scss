@@ -1,0 +1,22 @@
+@use  'src/styles/vars.scss';
+
+.appliances {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  align-items: center;
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .appliances {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

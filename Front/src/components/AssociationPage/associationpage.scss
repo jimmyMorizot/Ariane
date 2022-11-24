@@ -1,0 +1,135 @@
+@use 'src/styles/vars';
+
+.associationpage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: -(vars.$gutter);
+  margin-bottom: -(vars.$gutter*4);
+  background-color: vars.$dark;
+  padding: vars.$gutter;
+  
+
+  &-block {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 3px ridge vars.$green;
+
+    &-header {
+      width: 100%;
+      margin: auto;
+      background-color: vars.$white;
+      padding: vars.$gutter;
+      text-align: center;
+
+      &-name {
+        font-weight: 700;
+      }
+
+      &-img {
+        padding-bottom: vars.$gutter*0.5;
+        margin-bottom: vars.$gutter;
+        width: 100%;
+        height: 25vh;
+        max-height: 25vh;
+        object-position: 50% 50%;
+        object-fit: cover;
+      }
+
+      &-category {
+        padding:vars.$gutter*0.8;
+      }
+
+      &-description {
+        text-align: justify;
+      }
+    }
+
+    &-content {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      margin: auto;
+      padding: vars.$gutter;
+      background-color: vars.$white;
+      gap: 2vh;
+      align-items: center;
+
+      &-info {
+        border-bottom: 1px solid black;
+        padding: vars.$gutter*0.4;
+        width: 90%;
+
+        &-label {
+          margin-bottom: vars.$gutter*0.3;
+          font-weight: 700;
+        }
+      }
+    }
+  }
+
+  &-goback {
+    all: unset;
+    margin-top: vars.$gutter;
+    align-self: flex-start;
+    color: vars.$green;
+    &:before {
+      content: "\21E0      ";
+    }
+  
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .associationpage {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding-bottom: vars.$gutter*2;
+
+    &-block {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+
+      &-header {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        gap: vars.$gutter;
+        padding-bottom: vars.$gutter*2;
+        justify-content: center;
+
+        &-name {
+          font-size: larger;
+        }
+      }
+
+      &-content {
+        width: 50%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding-bottom: vars.$gutter*2;
+        align-items: center;
+
+        &-info {
+          margin-top: vars.$gutter;
+        }
+      }
+  }
+    &-goback {
+      font-size:large;
+    }
+  }
+}
+

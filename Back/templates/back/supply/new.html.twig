@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+	<h2>Création d'une fourniture</h2>
+
+	{{ include('back/supply/_form.html.twig') }}
+	<br>
+	<a class="btn btn-outline-primary btn-sm" href="{{ path('app_back_supply_index') }}">Retour à la liste</a>
+{% endblock %}

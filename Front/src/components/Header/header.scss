@@ -1,0 +1,85 @@
+@use 'src/styles/vars';
+
+@font-face {
+  font-family: 'Samantha';
+  src: url(../../assets/fonts/samantha.ttf);
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  padding-top: vars.$gutter;
+  margin-bottom: vars.$gutter;
+  width: 100%;
+  background-color: vars.$dark;
+
+  &-link {
+    width: 50%;
+    margin: auto;
+    margin-bottom: vars.$gutter;
+  }
+
+  &-logo {
+    width: 100%;
+    border: solid 2px vars.$red;
+  }
+
+  &-quote {
+    padding-right: vars.$gutter;
+    padding-left: vars.$gutter;
+    text-transform: uppercase;
+    color: vars.$white;
+    font-weight: bold;
+    font-size: 5vw;
+    text-align: justify;
+    line-height: 5vw;
+  }
+
+  span {
+    color: vars.$yellow;
+  }
+}
+
+
+
+/* ----------- TABLET ----------- */
+@media (min-width:768px) {
+  .header {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    &-link {
+      width: 20%;
+      margin: 0;
+    }
+
+    &-quote {  
+      width: 55%;
+      font-size: 3vw;
+      line-height: 3vw;
+    }
+  }
+}
+
+
+
+/* ----------- DESKTOP ----------- */
+@media (min-width:1024px) {
+  .header {
+    &-link {
+      width: 15%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-quote {
+      width: 60%;
+      text-align: center;
+      font-size: 2vw;
+      line-height: 2vw;
+    }
+  }
+}

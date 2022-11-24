@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+	<h2>Fournitures</h2>
+	{% include "_flash_message.html.twig" %}
+
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Slug</th>
+				<th>Image</th>
+				<th>Création</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for supply in supplies %}
+				<tr>
+					<td>{{ supply.id }}</td>
+					<td>{{ supply.name }}</td>
+					<td>{{ supply.slug }}</td>
+					<td>{{ supply.pictureUrl }}</td>
+					<td>{{ supply.createdAt ? supply.createdAt|date('Y-m-d') : '' }}</td>
+					<td>
+						{{ include('back/supply/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucune fourniture</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+
+	<a class="btn btn-success btn-sm" href="{{ path('app_back_supply_new') }}">Nouvelle fourniture</a>
+{% endblock %}

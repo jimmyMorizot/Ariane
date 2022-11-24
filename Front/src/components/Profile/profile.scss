@@ -1,0 +1,355 @@
+@use 'src/styles/vars';
+
+.profile {
+  width: 100%;
+  margin-top: -(vars.$gutter);
+  margin-bottom: -(vars.$gutter*4);
+  background-color: vars.$dark;
+
+  &-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 2vh;
+      width: 80%;
+      height: auto;
+      padding: 3vh;
+      border: 1px solid vars.$yellow;
+      background-color: vars.$dark;
+      color: vars.$white;
+
+      &-close {
+        all: unset;
+        align-self: flex-end;
+        font-size: 4vh;
+        color: vars.$yellow;
+        cursor: pointer;
+      }
+
+      &-title {
+        font-weight: 700;
+        font-size: 2.5vh;
+      }
+
+      &-form {
+        display: flex;
+        flex-direction: column;
+        gap: 2vh;
+
+        &-input {
+          width: 100%;
+        }
+
+        &--image {
+          display: flex;
+          flex-direction: column;
+
+          &-label {
+            display: flex;
+            flex-direction: column;
+            padding-top: vars.$gutter*0.5;
+            line-height: 3vh;
+          }
+
+          &-fieldset {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            margin-top: vars.$gutter;
+            margin-bottom: vars.$gutter;
+            gap: 1vh;
+
+            &-legend {
+              margin-bottom: 1vh;
+            }
+
+            &-label {
+              // quand non sélectionné
+              width: 30%;
+              height: 13vh;
+              position: relative;
+              cursor: pointer;
+              transition-duration: 0.2s;
+
+              &:before {
+                // quand sélectionné
+                background-color: vars.$dark;
+                color: vars.$yellow;
+                content: " ";
+                border-radius: 50%;
+                position: absolute;
+                top: -5px;
+                left: -5px;
+                width: 25px;
+                height: 25px;
+                text-align: center;
+                line-height: 28px;
+                transition-duration: 0.2s;
+                transform: scale(0);
+              }
+            }
+
+            &-img {
+              // quand non sélectionné
+              height: 100%;
+              width: 100%;
+              object-position: 50% 50%;
+              object-fit: cover;
+              transition-duration: 0.2s;
+              transform-origin: 50% 50%;
+            }
+
+            &-input {
+              display: none;
+            }
+            
+            :checked + .profile-modal-content-form--image-fieldset-label:before {
+              // quand sélectionné
+              content: "✓";
+              background-color: vars.$dark;
+              transform: scale(1);
+              z-index: 1;
+            }
+            
+            :checked + .profile-modal-content-form--image-fieldset-label .profile-modal-content-form--image-fieldset-img {
+              // quand sélectionné
+              transform: scale(0.9);
+              box-shadow: 0 0 5px vars.$dark;
+            }
+          }
+        }
+      }
+
+      &-save {
+        all: unset;
+        padding-top: vars.$gutter;
+        text-align: center;
+        line-height: vars.$gutter*1.2;
+        font-weight: 700;
+        cursor: pointer;
+
+        &:before {
+          content: "\1F5AB    ";
+          color: vars.$yellow;
+        }
+
+        &:hover {
+          color: vars.$yellow;
+        }
+      }
+
+      &-sent {
+        text-align: center;
+      }
+    }
+  }
+
+  &-container {
+    width: 90%;
+    margin: auto;
+    background-color: vars.$white;
+    border: 3px ridge vars.$yellow;
+  }
+
+  &-page {
+    padding-left: vars.$gutter*0.2;
+
+    &-title {
+      padding-top: vars.$gutter*0.5;
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    &-description {
+      font-size: small;
+    }
+  }
+
+  &-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: vars.$gutter*0.5;
+    padding-top: vars.$gutter*2;
+    margin-bottom: vars.$gutter*0.7;
+    border-top: none;
+    border-bottom: none;
+
+    &-title {
+      font-weight: 700;
+      font-size: 1.2rem;
+    }
+
+    &-category {
+      padding-bottom: vars.$gutter*0.5;
+    }
+    
+    &-img {
+      padding-bottom: vars.$gutter*0.5;
+      width: 100%;
+      max-height: 20vh;
+      object-position: 50% 50%;
+      object-fit: cover;
+
+      &--volunteer {
+        width: 50%;
+      }
+    }
+
+    &-description {
+      font-size: small;
+      text-align: justify;
+      line-height: vars.$gutter;
+    }
+  }
+
+  &-content {
+    width: 95%;
+    margin: auto;
+    margin-bottom: vars.$gutter;
+    padding: vars.$gutter*0.5;
+    border: 1px solid vars.$grey;
+    
+    &-info {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-end;
+      gap: 1vh;
+      width: 95%;
+      margin: auto;
+      padding: vars.$gutter;
+      padding-bottom: vars.$gutter*0.3;
+      padding-left: 0;
+      border-bottom: solid 1px vars.$grey;
+
+      &-edit {
+        all: unset;
+        padding-top: vars.$gutter*0.5;
+        padding-bottom: vars.$gutter*0.5;
+        width: 100%;
+        text-align: right;
+        font-size: small;
+        cursor: pointer;
+      }
+
+      &-label {
+        width: 40%;
+        font-weight: 700;
+        font-size: 0.9rem;
+      }
+
+      &-user {
+        width: 55%;
+        font-size: 0.9rem;
+        overflow-wrap: break-word;
+      }
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .profile {
+    &-modal {
+      &-content {
+        width: 60%;
+      }
+    }
+
+    &-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+      padding-bottom: vars.$gutter*3;
+      margin-top: vars.$gutter;
+      margin-bottom: vars.$gutter;
+    }
+
+    &-page {
+      width: 100%;
+      padding: vars.$gutter*0.5;
+
+      &-title {
+        font-size: x-large;
+      }
+
+      &-description {
+        font-size: medium;
+        margin-bottom: vars.$gutter*2;
+      }
+    }
+
+    &-header {
+      width: 45%;
+      margin: 0;
+      padding-top: vars.$gutter*2;
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 0;
+      width: 45%;
+
+      &-info {
+        margin: 0;
+
+        &-edit {
+          align-self: flex-end;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* ----------- DESKTOP ----------- */
+@media (min-width:1024px) {
+  .profile {
+    &-modal {
+      &-content {
+        width: 40%;
+      }
+    }
+
+    &-container {
+      width: 70%;
+      height: auto;
+    }
+  }
+}
+
+@media (min-width:1400px) {
+  .profile {
+    &-modal {
+      &-content {
+        width: 30%;
+      }
+    }
+
+    &-container {
+      width: 50%;
+      height: auto;
+    }
+  }
+}

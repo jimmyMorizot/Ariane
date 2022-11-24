@@ -1,0 +1,139 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+	<h3>
+		Annonce
+	</h3>
+	
+	{% if post.report == true %}
+		<div class="card border-danger mb-3" style="max-width: 81rem;">
+	{% else %}
+		<div class="card border-success mb-3" style="max-width: 81rem;">
+	{% endif %}
+		<div class="card-header">Annonce postée par <strong>{{ postAuthor.name }} </strong></div>
+		<div class="card-body">
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Id</th>
+						<td>{{ post.id }}</td>
+					</tr>
+					<tr>
+						<th>Titre</th>
+						<td>{{ post.title }}</td>
+					</tr>
+					<tr>
+						<th>Contenu</th>
+						<td>{{ post.description }}</td>
+					</tr>
+					<tr>
+						<th>Postée le</th>
+						<td>{{ post.createdAt ? post.createdAt|date('d-m-Y') : '' }}</td>
+					</tr>
+					<tr>
+						<th>Signalement</th>
+						<td>{{ post.report ? 'Oui' : 'Non' }}</td>
+					</tr>
+					{# <tr>
+						<th>Nombre de candidature</th>
+						<td>{{ post.nbAnswer }}</td>
+					</tr> #}
+					{# <tr>
+						<th>Modification</th>
+						<td>{{ post.updatedAt ? post.updatedAt|date('Y-m-d') : '' }}</td>
+					</tr> #}
+				</tbody>
+			</table>
+		</div>
+	</div>
+	
+	<a class="btn btn-outline-primary btn-sm" href="{{ path('app_back_post_index') }}">Retour à la liste</a>
+	{% if post.report == true %}
+	<a class="btn btn-outline-warning btn-sm" href="{{ path('app_back_post_unreport', {'id': post.id}) }}">Annuler le signalement</a>
+	{% endif %}
+	<br>
+	{{ include('back/post/_delete_form.html.twig') }}
+	<hr>
+
+	<div class="accordion" id="accordionExample">
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingOne">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+					Candidature(s) signalée(s)
+				</button>
+			</h2>
+			<div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-bs-parent="#accordionExample" style="">
+				<div class="accordion-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Contenu</th>
+								<th>Signalement</th>
+								<th>Action</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for candidacy in candidacies %}
+								{% if candidacy.report == true %}
+								<tr>
+									<td>{{ candidacy.content }}</td>
+									<td>{{ candidacy.report ? 'Oui' : 'Non' }}</td>
+									<td>
+										<a class="btn btn-outline-success btn-sm" href="{{ path('app_back_candidacy_show', {'id': candidacy.id}) }}">Voir</a>
+									</td>
+								</tr>
+								{% endif %}
+							{% else %}
+								<tr>
+									<td colspan="5">Aucune candidature actuellement</td>
+								</tr>
+							{% endfor %}
+						
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+		<div class="accordion-item">
+			<h2 class="accordion-header" id="headingTwo">
+				<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+					Candidature(s)
+				</button>
+			</h2>
+			<div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample" style="">
+				<div class="accordion-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th>Réponse</th>
+								<th>Signalement</th>
+								<th>Actions</th>
+							</tr>
+						</thead>
+						<tbody>
+							{% for candidacy in candidacies %}
+								{% if candidacy.report == false %}
+								<tr>
+									<td>{{ candidacy.content }}</td>
+									<td>{{ candidacy.report ? 'Oui' : 'Non' }}</td>
+									<td>
+										<a class="btn btn-outline-success btn-sm" href="{{ path('app_back_candidacy_show', {'id': candidacy.id}) }}">Voir</a>
+									</td>
+								</tr>
+								{% endif %}
+							{% else %}
+								<tr>
+									<td colspan="5">Aucune candidature actuellement</td>
+								</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+{% endblock %}

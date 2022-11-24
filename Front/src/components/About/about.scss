@@ -1,0 +1,78 @@
+@use 'src/styles/vars';
+
+.about {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+  margin-top: 2vh;
+  
+  &-title {
+    margin-bottom: vars.$gutter;
+    text-align: center;
+    font-size: 1.4em;
+    color: vars.$dark;
+  }
+
+  &-texts {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: space-between;
+    height: auto;
+    gap: 2vh;
+    padding: vars.$gutter;
+  }
+
+  &-text {
+    &-subtitle{
+      font-weight: 700;
+    }
+  }
+
+  &-returnhome {
+    position: relative;
+    width: 100%;
+    height: 40vh;
+    background-image: url('src/assets/images/link.png');
+    background-position: center;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  &-link {
+    position: absolute;
+    top: 17vh;
+    right: 36%;
+    width: 30%;
+    text-align: center;
+    font-size: small;
+    font-style: italic;
+  }
+}
+
+
+
+/* ----------- TABLET ----------- */
+@media (min-width:768px) {
+  .about {
+    width: 80%;
+
+    &-returnhome {
+      width: 100%;
+      margin: auto;
+    }
+  }
+}
+
+
+
+/* ----------- DESKTOP ----------- */
+@media (min-width:1024px) {
+  .about {
+    width: 70%;
+
+    &-returnhome {
+      width: 50%;
+    }
+  }
+}

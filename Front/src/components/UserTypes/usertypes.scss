@@ -1,0 +1,176 @@
+@use  'src/styles/vars.scss';
+
+.usertypes {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: vars.$gutter;
+  padding-left: 0;
+  padding-right: 0;
+  margin-bottom: vars.$gutter;   
+  border: 2px solid vars.$dark;
+  background-color: vars.$dark;
+
+  &-title {
+    padding-bottom: vars.$gutter;
+    text-align: center;
+    font-size: 2.5vh;
+    line-height: vars.$gutter;
+    color: vars.$white;
+  }
+}
+
+.usertype {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 85%;
+  height: 60vh;
+  margin-top: 1rem;
+
+  &--closed {
+    display: none;
+  }
+
+  &-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    border: solid 2px vars.$white;
+    border-bottom: none;
+
+    &--closed {
+      display: none;
+    }
+  }
+
+  &-text {
+    height: 30vh;
+    padding: vars.$gutter;
+    background-color: vars.$white;  
+    color: vars.$dark;
+    line-height: vars.$gutter*1.3;
+    
+    &--closed {
+      display: none;
+    }
+  }
+
+  &-button {
+    width: 70%;
+    margin-top: vars.$gutter*1.5;
+    padding-top: vars.$gutter*0.5;
+    padding-bottom: vars.$gutter*0.5;
+    border: 2px solid vars.$green;
+    background-color: vars.$dark;
+    color: vars.$white;
+    font-weight: 700;
+    text-align: center;
+
+    &--closed {
+      display: none;
+    }
+
+    &:hover {
+      background-color: vars.$white;
+      color: vars.$green;
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .usertypes {
+    height: 58vh;
+
+    &-title {
+      height: 3vh;
+    }
+  }
+
+  .usertype {
+    height: 60vh;
+
+    &--closed {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: center;
+      width: 85%;
+      height: 60vh;
+      margin-top: 1rem;
+    }
+  
+    &-img {
+      &--closed {
+        display: flex;
+        width: 100%;
+        height: 150px;
+        object-fit: cover;
+        border: solid 2px vars.$white;
+        border-bottom: none;
+      }
+    }
+  
+    &-text { 
+      height: 23vh;
+
+      &--closed {
+        display: flex;
+        flex-direction: column;
+        height: 23vh;
+        padding: vars.$gutter;
+        background-color: vars.$white;  
+        color: vars.$dark;
+        line-height: vars.$gutter*1.3;
+      }
+    }
+  
+    &-button {
+      all: unset;
+      width: 70%;
+      margin-top: vars.$gutter*1.5;
+      padding-top: vars.$gutter*0.5;
+      padding-bottom: vars.$gutter*0.5;
+      border: 2px solid vars.$green;
+      background-color: vars.$dark;
+      color: vars.$white;
+      font-weight: 700;
+      text-align: center;
+      cursor: pointer;
+
+      &--closed {
+        all: unset;
+        width: 70%;
+        margin-top: vars.$gutter*1.5;
+        padding-top: vars.$gutter*0.5;
+        padding-bottom: vars.$gutter*0.5;
+        border: 2px solid vars.$green;
+        background-color: vars.$dark;
+        color: vars.$white;
+        font-weight: 700;
+        text-align: center;
+        cursor: pointer;
+
+        &:hover {
+          background-color: vars.$white;
+          color: vars.$green;
+        }
+      }
+    }
+  }
+}
+
+
+
+/* -------- DESKTOP-------- */
+@media (min-width:1024px) {
+  .usertypes {
+    width: 90%;
+    margin: auto;
+  }
+}

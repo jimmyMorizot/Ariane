@@ -1,0 +1,47 @@
+@use 'src/styles/vars';
+
+.footer-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: vars.$gutter*0.5;
+  padding-top: vars.$gutter;
+  padding-bottom: vars.$gutter;
+  margin-top: vars.$gutter*4;
+  margin-bottom: 0;
+  border-top: solid 1px vars.$dark;
+  background-color: vars.$dark;
+  
+  &-links {
+    display: flex;
+    flex-direction: row;
+    gap: vars.$gutter*1.5;
+    color: vars.$white;
+  }
+
+  &-link {
+    font-size: small;
+
+    &:hover {
+      color: vars.$yellow;
+    }
+  }
+}
+
+
+
+/* ----------- TABLET/DESKTOP ----------- */
+@media (min-width:768px) {
+  .footer-nav {
+    height: 5vw;
+
+    &-links {
+      gap: vars.$gutter*7;
+    }
+
+    &-link {
+      font-size: large;
+    }
+  }
+}

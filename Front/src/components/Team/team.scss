@@ -1,0 +1,115 @@
+@use  'src/styles/vars.scss';
+
+.team {
+  width: 100%;
+  margin-top: -(vars.$gutter);
+  margin-bottom: -(vars.$gutter*4);
+  background-color: vars.$dark;
+  color: vars.$white;
+
+  &-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-bottom: vars.$gutter*3;
+  }
+
+  span {
+   color: vars.$yellow
+  }
+
+  &-title {
+    padding-top: vars.$gutter*3;
+    font-size: 4vh;
+  }
+
+  &-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 70%;
+    padding: vars.$gutter;
+    margin-top: vars.$gutter*3;
+    border: 10px double vars.$yellow;
+
+    &-picture {
+      width: 100%;
+    }
+
+    &-name {
+      padding-top: vars.$gutter*0.5;
+      padding-bottom: vars.$gutter*0.5;
+      font-weight: bold;
+      font-size: 2.5vh;
+    }
+
+    &-role {
+      text-align: center;
+    }
+
+    &-socials {
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      justify-content: space-evenly;
+      padding-top: vars.$gutter;
+    }
+
+    &-social {
+      padding: vars.$gutter*0.5;
+      border-radius: 100px;
+      background-color: vars.$yellow;
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .team {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &-container {
+      width: 80%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-evenly;
+    }
+
+    &-title {
+      width: 100%;
+      text-align: center;
+    }
+
+    &-card {
+      width: 40%;
+
+      &-name {
+        font-size: 2vh;
+      }
+    }
+  }
+}
+
+
+
+/* ----------- DESKTOP ----------- */
+@media (min-width:1024px) {
+  .team {
+    &-container {
+      width: 100%;
+    }
+
+    &-title {
+      font-size: 5vh;
+    }
+
+    &-card {
+      width: 20%;
+    }
+  }
+}

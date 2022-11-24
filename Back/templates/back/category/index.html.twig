@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+	<h2>Catégories d'association</h2>
+	{% include "_flash_message.html.twig" %}
+	
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<th>Id</th>
+				<th>Nom</th>
+				<th>Slug</th>
+				<th>Création</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for category in categories %}
+				<tr>
+					<td>{{ category.id }}</td>
+					<td>{{ category.name }}</td>
+					<td>{{ category.slug }}</td>
+					<td>{{ category.createdAt ? category.createdAt|date('Y-m-d') : '' }}</td>
+					<td>
+						{{ include('back/category/_delete_form.html.twig') }}
+					</td>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="5">Aucune categorie</td>
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+	<a class="btn btn-success btn-sm" href="{{ path('app_back_category_new') }}">Nouvelle categorie</a>
+
+
+{% endblock %}

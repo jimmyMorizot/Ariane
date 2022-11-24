@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+
+	<h2>Utilisateur</h2>
+
+	{% if user.report == true %}
+		<div class="card border-danger mb-3" style="max-width: 81rem;">
+	{% else %}
+		<div class="card border-success mb-3" style="max-width: 81rem;">
+	{% endif %}
+	
+		<div class="card-header"> {{ user.profil }} </div>
+		<div class="card-body">
+			{% if ( user.profil ) == 'Association' %}
+				<h4 class="card-title">{{ user.name }}</h4>
+				{% for category in categories %}
+				<h5>
+					{{ category.name }}
+				</h5>
+				{% endfor %}
+			{% else %}
+				<h4 class="card-title">{{ user.firstname }} {{ user.lastname}}</h4>
+			{% endif %}
+			<table class="table">
+				<tbody>
+					<tr>
+						<th>Id</th>
+						<td>{{ user.id }}</td>
+					</tr>
+					{% if ( user.profil ) == 'Admin' %}
+						<tr>
+							<th>Role</th>
+							<td>{{ user.roles ? user.roles|json_encode : '' }}</td>
+						</tr>
+					{% endif %}
+					{% if (user.profil) == 'Association' %}
+						<tr>
+							<th>Description</th>
+							<td>{{ user.description }}</td>
+						</tr>
+					{% endif %}
+
+					<tr>
+						<th>Adresse</th>
+						<td>{{ user.address }}
+							<br>
+							{{ user.postCode }}
+							{{ user.city }}
+							<br>
+							{{ user.country }}
+						</td>
+					</tr>
+					<tr>
+						<th>Email</th>
+						<td>{{ user.email }}</td>
+					</tr>
+					<tr>
+						<th>Téléphone</th>
+						<td>{{ user.phoneNumber }}</td>
+					</tr>
+					<tr>
+						<th>Signalement</th>
+						<td>{{ user.report ? 'Oui' : 'Non' }}</td>
+					</tr>
+					{# <tr>
+						<th>Slug</th>
+						<td>{{ user.slug }}</td>
+					</tr>
+					<tr>
+						<th>CitySlug</th>
+						<td>{{ user.citySlug }}</td>
+					</tr>
+					<tr>
+						<th>Password</th>
+						<td>{{ user.password }}</td>
+					</tr>
+					<tr>
+						<th>Image</th>
+						<td>{{ user.picture }}</td>
+					</tr> #}
+					{# <tr>
+						<th>Categorie</th>
+						<td>{{ user.category }}</td>
+					</tr> #}
+					<tr>
+						<th>Inscrit depuis le</th>
+						<td>{{ user.createdAt ? user.createdAt|date('d-m-Y') : '' }}</td>
+					</tr>
+					{# <tr>
+						<th>Modification</th>
+						<td>{{ user.updatedAt ? user.updatedAt|date('d-m-Y') : '' }}</td>
+					</tr> #}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+	<a class="btn btn-outline-primary btn-sm" href="{{ path('app_back_user_index') }}">Retour à la liste</a>
+
+	{% if ( user.profil ) == "admin" %}
+		<a class="btn btn-warning btn-sm" href="{{ path('app_back_user_edit', {'id': user.id}) }}">Modifier</a>
+	{% endif %}
+	<br>
+	{{ include('back/user/_delete_form.html.twig') }}
+{% endblock %}

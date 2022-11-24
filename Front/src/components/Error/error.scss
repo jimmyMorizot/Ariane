@@ -1,0 +1,42 @@
+@use 'src/styles/vars';
+
+@font-face {
+  font-family: 'Labirin';
+  src: url(../../assets/fonts/Labirin.ttf);
+}
+
+.error {
+  height: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+
+  &-title {
+    font-family: 'Labirin';
+    color: vars.$red;
+    font-size: 20vh;
+  }
+
+  &-text {
+    padding: vars.$gutter;
+    font-size: 3vh;
+  }
+
+  &-returnhome {
+    width: auto;
+    padding: vars.$gutter;
+    border: 2px solid vars.$red;
+    border-radius: 5px;
+    background-color: vars.$red;
+    color: vars.$grey;
+    font-weight: 700;
+    text-align: center;
+
+    &:hover {
+      border: 2px solid vars.$red;
+      background-color: vars.$grey;
+      color: vars.$red;
+    }
+  }
+}

@@ -1,0 +1,54 @@
+@use  'src/styles/vars.scss';
+
+.home {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vh;
+  width: 90%;
+
+  &-title {
+    width: 100%;
+    text-align: center;
+    font-size: 3vh;
+    color: vars.$dark;  
+  }
+
+  &-description {
+    width: 100%;
+    text-align: center;
+    line-height: vars.$gutter*1.2;
+  }
+
+  &-users {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-top: vars.$gutter;
+  }
+}
+
+
+
+/* ----------- TABLET ----------- */
+@media (min-width:768px) {
+  .home {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    &-title {
+      padding: vars.$gutter;
+      font-size: 3.5vh;
+    }
+
+    &-description {
+      font-size: 2vh;
+    }
+
+    &-users {
+      width: 40%;
+    }
+  }
+}

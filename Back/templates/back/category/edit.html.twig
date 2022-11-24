@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ariane Back-Office {% endblock %}
+
+{% block body %}
+	<h2>Modification de la catégorie</h2>
+	<a class="btn btn-primary btn-sm" href="{{ path('app_back_category_index') }}">Retour à la liste</a>
+
+	{{ include('back/category/_form.html.twig', {'button_label': 'Modifier'}) }}
+
+
+	{{ include('back/category/_delete_form.html.twig') }}
+{% endblock %}

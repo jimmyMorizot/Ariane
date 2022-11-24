@@ -1,0 +1,63 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Ariane Back-Office {% endblock %}
+
+{% block body %}
+
+	<div class="context">
+		<div>
+			<h3>Candidature</h3>
+			{% if candidacy.report == true %}
+				<div class="card border-danger mb-3" style="max-width: 35rem;">
+			{% else %}
+				<div class="card border-success mb-3" style="max-width: 35rem;">
+			{% endif %}
+			{% if candidacyAuthor.profil == 'Association' %}
+				<div class="card-header">Candidature de <strong>{{ candidacyAuthor.name  }}</strong></div>
+			{% else %}
+				<div class="card-header">Candidature de <strong>{{ candidacyAuthor.firstname }} {{ candidacyAuthor.lastname  }}</strong></div>
+			{% endif %}
+				<div class="card-body">
+					<table class="table">
+						<tbody>
+							<tr>
+								<th>Id</th>
+								<td>{{ candidacy.id }}</td>
+							</tr>
+							<tr>
+								<th>Contenu</th>
+								<td>{{ candidacy.content }}</td>
+							</tr>
+							<tr>
+								<th>Posté le</th>
+								<td>{{ candidacy.createdAt ? candidacy.createdAt|date('d-m-Y') : '' }}</td>
+							</tr>
+							<tr>
+								<th>Signalement</th>
+								<td>{{ candidacy.report ? 'Oui' : 'Non' }}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+
+		<div>
+			<h3>Annonce d'origine</h3>
+			<div class="card bg-light mb-3" style="max-width: 35rem;">
+				<div class="card-header">posté par <strong>{{ postAuthor.name }}</strong> <em><small>le {{ post.createdAt ? post.createdAt|date('d-m-Y') : '' }}</small></em></div>
+				<div class="card-body">
+					<h4 class="card-title">{{ post.title}}</h4>
+					<p>{{ post.description }}</p>
+				</div>
+			</div>
+		</div>	
+	</div>
+
+	<a class="btn btn-outline-primary btn-sm" href="{{ path('app_back_candidacy_index') }}">Retour à la liste</a>
+	{% if candidacy.report == true %}
+	<a class="btn btn-outline-warning btn-sm" href="{{ path('app_back_candidacy_unreport', {'id': candidacy.id}) }}">Annuler le signalement</a>
+	{% endif %}
+	<br>
+	{{ include('back/candidacy/_delete_form.html.twig') }}
+{% endblock %}

@@ -1,0 +1,168 @@
+@use  'src/styles/vars.scss';
+
+.postview {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3vh;
+  border-top: 10px double vars.$green;
+  border-bottom: 10px double vars.$green;
+  text-align: center;
+
+  &-header {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: rgba(2, 117, 117, 0.2);
+
+    &-title {
+      padding: vars.$gutter;
+      text-transform: uppercase;
+      font-weight: bold;
+    }
+  
+    &-img {
+      max-height: 30vh;
+      object-position: 50% 50%;
+      object-fit: cover;
+    }
+  
+    &-info {
+      padding: vars.$gutter;
+      &-date{
+        margin-top: vars.$gutter*0.7;
+      }
+    }
+  
+    &-content {
+      padding-left: vars.$gutter;
+      padding-right: vars.$gutter;
+      font-size: small;
+      text-align: justify;
+    }
+
+  }
+
+  &-description {
+    padding-left: vars.$gutter;
+    padding-right: vars.$gutter;
+    font-size: small;
+    text-align: justify;
+  }
+
+  &-com {
+    width: 95%;
+    height: auto;
+    padding-bottom: vars.$gutter;
+  }
+
+  &-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 80%;
+      padding: 3vh;
+      border: 1px solid vars.$yellow;
+      background-color: vars.$dark;
+      color: vars.$white;
+      font-weight: 700;
+      text-align: center;
+
+      &-close {
+        all: unset;
+        align-self: flex-end;
+        font-size: 4vh;
+        color: vars.$yellow;
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content:flex-end;
+  padding-top: vars.$gutter;
+  
+  &-delete {
+    all: unset;
+    font-size: smaller;
+    padding: vars.$gutter*0.4;
+    color: vars.$green;
+    cursor: pointer;
+  }
+}
+
+.goback {
+  all: unset;
+  margin-left: vars.$gutter;
+  align-self: flex-start;
+  &:before {
+    content: "\21E0      ";
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .postview {
+    width: 80%;
+    border: 10px double vars.$green;
+    font-size: large;    
+
+    &-description {
+      font-size: medium;
+    }
+  }
+  
+  .container {
+    width: 80%;
+  }
+
+  .goback {
+    padding-top: vars.$gutter;
+    margin-left: vars.$gutter*2;
+  }
+}
+
+
+
+/* -------- DESKTOP-------- */
+@media (min-width:1024px) {
+  .postview {
+    width: 50%;
+
+    &-header {
+      &-img {
+        min-height: 40vh;
+      }
+    }
+  }
+
+  .container {
+    width: 50%;
+  }
+}
+
+

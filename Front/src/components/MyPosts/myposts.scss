@@ -1,0 +1,44 @@
+@use  'src/styles/vars.scss';
+
+.myposts {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: vars.$gutter;
+  gap: 5vh;
+
+  &-new {
+    width: 80%;
+    padding-top: vars.$gutter*0.4;
+    padding-bottom: vars.$gutter*0.5;
+    border: 2px solid vars.$dark;
+    background-color: vars.$dark;
+    color: vars.$white;
+    text-align: center;
+
+    &:before {
+      content: "\002B    ";
+      font-size: x-large;
+      color: vars.$yellow;
+    }
+
+    &:hover {
+      background-color: vars.$grey;
+      color: vars.$dark;
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .myposts {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}
+

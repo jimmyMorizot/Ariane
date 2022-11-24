@@ -1,0 +1,77 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ariane Back-Office
+{% endblock %}
+
+{% block body %}
+	<h2>Candidatures</h2>
+	{% include "_flash_message.html.twig" %}
+
+	<ul class="nav nav-tabs" role="tablist">
+		<li class="nav-item" role="presentation">
+			<a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab">Candidatures Signalées</a>
+		</li>
+
+
+		<li class="nav-item" role="presentation">
+			<a class="nav-link" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1">Toutes les candidatures</a>
+		</li>
+	</ul>
+	<div id="myTabContent" class="tab-content">
+		<div class="tab-pane fade active show" id="home" role="tabpanel">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th>Contenu</th>
+						<th>Envoyée le</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for candidacy in candidacies %}
+						{% if candidacy.report == true %}
+							<tr>
+								<td>{{ candidacy.content|u.truncate(100) }}...</td>
+								<td>{{ candidacy.createdAt ? candidacy.createdAt|date('d-m-Y') : '' }}</td>
+								<td>
+									<a class="btn btn-outline-success btn-sm" href="{{ path('app_back_candidacy_show', {'id': candidacy.id}) }}">Voir</a>
+								</td>
+							</tr>
+						{% endif %}
+					{% else %}
+						<tr>
+							<td colspan="5">Aucune candidature actuellement</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+		<div class="tab-pane fade" id="profile" role="tabpanel">
+			<table class="table">
+				<thead>
+					<tr>
+						<th>Contenu</th>
+						<th>Envoyée le</th>
+						<th>Action</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for candidacy in candidacies %}
+						<tr>
+							<td>{{ candidacy.content|u.truncate(100) }}...</td>
+							<td>{{ candidacy.createdAt ? candidacy.createdAt|date('d-m-Y') : '' }}</td>
+							<td>
+								<a class="btn btn-outline-success btn-sm" href="{{ path('app_back_candidacy_show', {'id': candidacy.id}) }}">Voir</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="5">Aucune candidature actuellement</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+
+{% endblock %}

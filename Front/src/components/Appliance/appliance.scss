@@ -1,0 +1,57 @@
+@use  'src/styles/vars.scss';
+
+.appliance {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-top: 5px double vars.$green;
+  padding-top: vars.$gutter;
+  align-items: center;
+  gap: 3vh;
+
+  &-info{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    font-size: small;
+
+  }
+
+  &-report {
+    all: unset;
+    width: 60%;
+    font-size: 1.7vh;
+    color: red;
+    cursor: pointer;
+
+    &:before {
+      content: "\26A0 ";
+    }
+  }
+}
+
+
+
+/* -------- TABLET -------- */
+@media (min-width:768px) {
+  .appliance {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    
+    &-report {
+      font-size: 1.7vh;
+    }
+  }
+}
+
+
+/* -------- DESKTOP -------- */
+@media (min-width:1024px) {
+  .appliance {   
+    &-report {
+      font-size: 1.4vh;
+    }
+  }
+}

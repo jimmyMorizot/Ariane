@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ariane Back-Office{% endblock %}
+
+{% block body %}
+    <h1>Create new Candidacy</h1>
+
+    {{ include('back/candidacy/_form.html.twig') }}
+
+    <a href="{{ path('app_back_candidacy_index') }}">back to list</a>
+{% endblock %}

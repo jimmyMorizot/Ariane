@@ -1,0 +1,142 @@
+@use 'src/styles/vars';
+
+.inscription {
+  display: flex;
+  flex-direction: column;
+  min-height: 60vh;
+  padding: vars.$gutter*0.5;
+
+  &-input {
+    width: 100%;
+  }
+
+  &-form {
+    display: flex;
+    flex-direction: column;
+    margin-top: 5vw;
+    gap: 3vw;
+
+    &-button {
+      all: unset;
+      margin-top: 2vw;
+      padding: vars.$gutter*0.5;
+      text-align: center;
+      border: solid 2px vars.$green;
+      cursor: pointer;
+
+      &:hover {
+        color: vars.$green;
+        background-color: vars.$white;
+      }
+    }
+  }
+
+  &-field {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-modal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+      width: 80%;
+      height: 30vh;
+      padding: 3vh;
+      border: 1px solid vars.$yellow;
+      background-color: vars.$dark;
+      color: vars.$white;
+      font-weight: 700;
+      text-align: center;
+
+      &-close {
+        all: unset;
+        align-self: flex-end;
+        font-size: 4vh;
+        color: vars.$yellow;
+        cursor: pointer;
+      }
+    }
+
+    &-link {
+      padding: vars.$gutter;
+
+      &:hover {
+        color: vars.$yellow;
+      }
+
+      &:before {
+        content: "\00BB   ";
+        color: vars.$yellow;
+      }
+    }
+  }
+}
+
+.required {
+  color: red;
+}
+
+div.required {
+  padding-top: vars.$gutter;
+  font-style: italic;
+}
+
+.conditions {
+  padding-top: vars.$gutter;
+  font-style: italic;
+  text-align: center;
+}
+
+
+
+/* ----------- TABLET ----------- */
+@media only screen and (min-width: 768px) {
+  .inscription {
+    width: 60%;
+    margin: auto;
+
+    &-form {
+      gap: 2vw;
+    }
+
+    &-modal {
+      &-content {
+        width: 60%;
+      }
+    }
+  }
+}
+
+
+
+/* ----------- DESKTOP ----------- */
+@media only screen and (min-width: 1024px) {
+  .inscription {
+    width: 40%;
+
+    &-form {
+      margin-top: 2.5vw;
+      gap: 1.2vw;
+    }
+
+    &-modal {
+      &-content {
+        width: 35%;
+      }
+    }
+  }
+}
